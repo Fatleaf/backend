@@ -14,13 +14,15 @@
     <!-- page css -->
     <link rel="stylesheet" href="./css/index.css">
 
+    @yield('css')
+
 
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">台灣秘境</a>
+        <a class="navbar-brand" href="/">台灣秘境</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,13 +31,13 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">首頁</a>
+                    <a class="nav-link" href="/">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/news.html">最新消息</a>
+                    <a class="nav-link" href="/news">最新消息</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/contact_us.html">來信推薦</a>
+                    <a class="nav-link" href="/contact_us">來信推薦</a>
                 </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
@@ -47,6 +49,7 @@
 
     <main role="main">
         <!-- 內容放此 -->
+        @yield('content')
         <hr>
     </main>
 
