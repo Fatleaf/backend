@@ -40,7 +40,7 @@
                         <h4>景點名稱</h4>
                         <img width="100%" src="./images/index/news/news_example.JPG" alt="圖片建議尺寸: 1000 x 567">
                         <p class="news_content">一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字...</p>
-                        <a class="btn btn-success" href="./news_info.html" role="button">點擊查看更多 &raquo;</a>
+                        <a class="btn btn-success" href="/news_info.html" role="button">點擊查看更多 &raquo;</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -49,7 +49,7 @@
                         <h4>景點名稱</h4>
                         <img width="100%" src="./images/index/news/news_example.JPG" alt="圖片建議尺寸: 1000 x 567">
                         <p class="news_content">一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字...</p>
-                        <a class="btn btn-success" href="./news_info.html" role="button">點擊查看更多 &raquo;</a>
+                        <a class="btn btn-success" href="/news_info.html" role="button">點擊查看更多 &raquo;</a>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -58,7 +58,7 @@
                         <h4>景點名稱</h4>
                         <img width="100%" src="./images/index/news/news_example.JPG" alt="圖片建議尺寸: 1000 x 567">
                         <p class="news_content">一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字一串文字</p>
-                       <a class="btn btn-success" href="./news_info.html" role="button">點擊查看更多 &raquo;</a>
+                       <a class="btn btn-success" href="/news_info.html" role="button">點擊查看更多 &raquo;</a>
                     </div>
                 </div>
             </div>
