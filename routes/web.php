@@ -16,4 +16,17 @@
 // });
 
 
-Route::get('/index', 'FrontController@index');
+Route::get('/', 'FrontController@index');
+
+Route::get('/index.html', 'FrontController@index');
+
+Route::get('/contact_us.html', 'FrontController@contact_us');
+
+Route::get('/news.html', 'FrontController@news');
+
+Route::get('/news_info.html', 'FrontController@news_info');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
