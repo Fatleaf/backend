@@ -1,7 +1,7 @@
 @extends('layouts/nav_footer')
 
 @section('css')
-<link rel="stylesheet" href="./css/contact.css">
+<link rel="stylesheet" href="/css/contact.css">
 @endsection
 
 @section('content')

@@ -9,7 +9,7 @@
 
     <section class="news">
         <div class="container">
-            <h2 class="news_title">最新消息</h2>
+            <h2 class="news_title">天團再現</h2>
 
             <div class="row news_lists">
                 @foreach ($news_list as $news)
@@ -19,13 +19,13 @@
                         <h4>{{$news->sub_title}}</h4>
                         <img width="100%" src="{{$news->img_url}}" alt="圖片建議尺寸: 1000 x 567">
                         <p class="news_content">{{$news->content}}</p>
-                        <a class="btn btn-success" href="/news_info/{{$news->id}}" role="button">點擊查看更多 &raquo;</a>
+                        <a class="btn btn-success" href="/animals_info/{{$news->id}}" role="button">點擊查看更多 &raquo;</a>
                     </div>
                 </div>
                 @endforeach
             </div>
 
-            {{ $news_list->links() }} 
+            {{ $news_list->links() }}
 
         </div>
     </section>

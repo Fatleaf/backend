@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- page css -->
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
 
     @yield('css')
 
@@ -38,6 +38,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contact_us">來信推薦</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/animals">動物天團</a>
                 </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
