@@ -28,8 +28,9 @@ Route::get('/news_info/{news_id}', 'FrontController@news_info');
 
 Route::get('/animals', 'FrontController@animals');
 
-Route::get('/animals_info/{number}', 'FrontController@animals_info'); //{number}物件number,問老師...
+Route::get('/animals_info/{animals_id}', 'FrontController@animals_info'); //{number}物件number,問老師...
 
+Route::post('/store_contact', 'FrontController@store_contact');
 
 
 Auth::routes();
