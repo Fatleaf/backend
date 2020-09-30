@@ -25,7 +25,9 @@
                 @endforeach
             </div>
 
-            {{ $news_list->links() }} 
+
+            {{-- paginate套件功能，直接長出分業按鈕 --}}
+            {{ $news_list->links() }}
 
         </div>
     </section>

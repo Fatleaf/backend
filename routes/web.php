@@ -30,7 +30,7 @@ Route::get('/animals', 'FrontController@animals');
 
 Route::get('/animals_info/{animals_id}', 'FrontController@animals_info'); //{number}物件number,問老師...
 
-Route::post('/store_contact', 'FrontController@store_contact');
+Route::post('/store_contact', 'FrontController@store_contact');//post傳值
 
 
 Auth::routes();

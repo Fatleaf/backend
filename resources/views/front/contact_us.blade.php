@@ -18,6 +18,7 @@
                     <li>注意事項</li>
                 </ol>
             </div>
+            {{-- form的傳值方法(method) 連接的位置(action) form底下的輸入都要有name才能回傳,select裡的option要給值，回傳的時候才會有值--}}
             <form method="POST" action="/store_contact" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">

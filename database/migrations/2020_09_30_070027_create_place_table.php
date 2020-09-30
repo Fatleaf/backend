@@ -13,7 +13,7 @@ class CreatePlaceTable extends Migration
      */
     public function up()
     {
-        Schema::create('place', function (Blueprint $table) {
+        Schema::create('place', function (Blueprint $table) {  //新增變數place與底下的變數資料型態
             $table->bigIncrements('id');
             $table->string('email');
             $table->string('location');

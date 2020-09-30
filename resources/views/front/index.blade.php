@@ -36,6 +36,7 @@
             <div class="row news_lists">
                 {{-- {{$news_list}} --}}
 
+                {{-- foreach迴圈執行套版樣式，new_list變數來自controller，{{}}不太聊解 --}}
                 @foreach ($news_list as $news)
                 <div class="col-md-4">
                     <div class="news_list">

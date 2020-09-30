@@ -12,8 +12,12 @@ class FrontController extends Controller
     {
         // $user = DB::table('user')->get();
         $news_list = DB::table('news')->orderBy('id','desc')->take(3)->get();
-        // dd($news_list);
+        //新增變數new_list,用DB索引migrations->table->news裡的變數
+        //orderBy('誰','方法')--排序 take(幾個)--取幾個 get()--取值
+
+
         return view('front.index',compact('news_list'));
+        //回傳 view('位址',??)
     }
 
     public function contact_us()
@@ -23,7 +27,7 @@ class FrontController extends Controller
 
     public function news()
     {
-        $news_list = DB::table('news')->paginate(6);
+        $news_list = DB::table('news')->orderBy('id','desc')->paginate(6);
         // dd($news_list);
         return view('front.news',compact('news_list'));
     }
@@ -37,7 +41,7 @@ class FrontController extends Controller
 
     public function animals()
     {
-        $news_list = DB::table('animals')->paginate(6);
+        $news_list = DB::table('animals')->orderBy('id','desc')->paginate(6);
 
         return view('front.animals',compact('news_list'));
     }
@@ -68,7 +72,7 @@ class FrontController extends Controller
         //      'description' => $hello->description ]
         // );
 
-        Place::create($hello->all());
-        return 'GooD';
+        Place::create($hello->all()); //Place要注意有沒有USE(看最上面)，因為是從model取變數
+        return 'GooD,上傳成功';
     }
 }
