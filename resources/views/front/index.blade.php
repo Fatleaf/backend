@@ -37,14 +37,14 @@
                 {{-- {{$news_list}} --}}
 
                 {{-- foreach迴圈執行套版樣式，new_list變數來自controller，{{}}不太聊解 --}}
-                @foreach ($news_list as $news)
+                @foreach ($news_list as $value)
                 <div class="col-md-4">
                     <div class="news_list">
-                    <h3>{{$news->title}}</h3>
-                        <h4>{{$news->sub_title}}</h4>
-                        <img width="100%" src="{{$news->img_url}}" alt="圖片建議尺寸: 1000 x 567">
-                        <p class="news_content">{{$news->content}}</p>
-                    <a class="btn btn-success" href="/news_info/{{$news->id}}" role="button">點擊查看更多 &raquo;</a>
+                    <h3>{{$value->title}}</h3>
+                        <h4>{{$value->sub_title}}</h4>
+                        <img width="100%" src="{{$value->img_url}}" alt="圖片建議尺寸: 1000 x 567">
+                        <p class="news_content">{{$value->content}}</p>
+                    <a class="btn btn-success" href="/news_info/{{$value->id}}" role="button">點擊查看更多 &raquo;</a>
                     </div>
                 </div>
                 @endforeach
