@@ -60,7 +60,7 @@ class FrontController extends Controller
     //     dd($request->animals_info());
     // }
 
-    public function store_contact(Request $hello)
+    public function store_contact(Request $request)
     {
         // dd($hello->all());
 
@@ -72,7 +72,7 @@ class FrontController extends Controller
         //      'description' => $hello->description ]
         // );
 
-        Place::create($hello->all()); //Place要注意有沒有USE(看最上面)，因為是從model取變數
+        Place::create($request->all()); //Place要注意有沒有USE(看最上面)，因為是從model取變數
         return 'GooD,上傳成功';
     }
 }

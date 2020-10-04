@@ -27,7 +27,7 @@
 
 
             {{-- paginate套件功能，直接長出分業按鈕 --}}
-            {{ $news_list->links() }}
+            {{ $news_list->links('pagination::bootstrap-4') }}
 
         </div>
     </section>
