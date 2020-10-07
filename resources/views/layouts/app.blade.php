@@ -34,11 +34,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/news">新增資料管理</a>
+                            <a class="nav-link" href="/admin/news">資料管理</a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="/admin/edit">新增資料</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/edit">到底發生什麼事</a>
-                        </li>
+                            <a class="nav-link" href="/admin/edit">編輯資料</a>
+                        </li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -85,7 +88,7 @@
     </div>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 
         @yield('js')
 
