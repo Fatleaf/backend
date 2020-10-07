@@ -30,9 +30,7 @@
                 <td>Garrett Winters</td>
                 <td>Accountant</td>
                 <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
+
             </tr>
             <tr>
                 <td>Ashton Cox</td>
@@ -491,4 +489,10 @@
 @section('js')
   <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+  <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+  </script>
 @endsection
