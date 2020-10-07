@@ -15,6 +15,7 @@
 //     return view('welcome');
 // });
 
+// use Illuminate\Routing\Route; 基本上route上不會再呼叫函式
 
 Route::get('/', 'FrontController@index');
 
@@ -33,6 +34,22 @@ Route::get('/animals_info/{animals_id}', 'FrontController@animals_info'); //{num
 Route::post('/store_contact', 'FrontController@store_contact');//post傳值
 
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+
+    Route::get('news', 'NewsController@index');
+    Route::get('news.create', 'NewsController@create');
+    Route::get('news.store', 'NewsController@store');
+    Route::get('news.edit.{news_id}', 'NewsController@edit');
+    Route::get('news.update.{news_id}', 'NewsController@update');
+    Route::get('news.destroy.{news_id}', 'NewsController@destroy');
+});
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('users', function () {
+//         // Matches The "/admin/users" URL
+//     });
+// });
