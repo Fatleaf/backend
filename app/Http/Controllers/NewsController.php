@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\news;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class NewsController extends Controller
 {
@@ -39,9 +41,40 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        news::create($request->all());
+        // news::create($request->all());
 
-        return '新增成功';
+        // $requestData = $request->all();
+        // $file_name = $request->file('img_url')->store('','public');
+        // $requestData['img_url'] =$file_name;
+
+
+
+
+        // news::create($requestData);
+
+        // $new_news = new news();
+        // $new_news->title = $request->title;
+        // $new_news->img_url = $request->img_url;
+        // $new_news->sub_title = $request->sub_title;
+        // $new_news->content = $request->content;
+        // $new_news->save();
+
+
+
+
+        $requestData = $request->all();
+
+        //判斷request是否有img_url
+        if($request->hasFile('img_url')) {
+            $file = $request->file('img_url');
+            $path = $this->fileUpload($file,'news');
+            $requestData['img_url'] = $path;
+        }
+
+        news::create($requestData);
+
+
+        return redirect('admin/news');
     }
 
     /**
@@ -78,14 +111,37 @@ class NewsController extends Controller
     {
         // news::create($request->where('id', '=', $id)->all());
 
-        DB::table('news')->where('id', '=', $id)->update(
-            ['title' => $request->title,
-            'img_url' => $request->img_url,
-            'sub_title' => $request->sub_title,
-            'content' => $request->content]
-        );
+        // DB::table('news')->where('id', '=', $id)->update(
+        //     ['title' => $request->title,
+        //     'img_url' => $request->img_url,
+        //     'sub_title' => $request->sub_title,
+        //     'content' => $request->content]
+        // );
 
-        return '編輯成功!';
+        $item = news::find($id);
+
+        $requestData = $request->all();
+
+        //判斷是否有上傳圖片
+        if($request->hasFile('img_url')) {
+
+            //刪除舊有圖片
+            $old_image = $item->img_url;
+            File::delete(public_path().$old_image);
+
+            //上傳新的圖片
+            $file = $request->file('img_url');
+            $path = $this->fileUpload($file,'news');
+
+            //將圖片的路徑放入requestData
+            $requestData['img_url'] = $path;
+
+        }
+
+        $item->update($requestData);
+
+
+        return redirect('admin/news');
     }
 
     /**
@@ -96,7 +152,34 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        news::destroy($id);
-        return '刪除成功';
+        // news::destroy($id);
+        $item = news::find($id);
+
+        $old_image = $item->img_url;
+        if(file_exists(public_path().$old_image)){
+            File::delete(public_path().$old_image);
+        }
+        $item->delete();
+
+        return redirect('admin/news');
+    }
+
+    private function fileUpload($file,$dir){
+        //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
+        if( ! is_dir('upload/')){
+            mkdir('upload/');
+        }
+        //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
+        if ( ! is_dir('upload/'.$dir)) {
+            mkdir('upload/'.$dir);
+        }
+        //取得檔案的副檔名
+        $extension = $file->getClientOriginalExtension();
+        //檔案名稱會被重新命名
+        $filename = strval(time().md5(rand(100, 200))).'.'.$extension;
+        //移動到指定路徑
+        move_uploaded_file($file, public_path().'/upload/'.$dir.'/'.$filename);
+        //回傳 資料庫儲存用的路徑格式
+        return '/upload/'.$dir.'/'.$filename;
     }
 }

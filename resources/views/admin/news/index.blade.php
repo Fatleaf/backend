@@ -20,6 +20,7 @@
                 <th>標題</th>
                 <th>圖片</th>
                 <th>副標題</th>
+                <th>創建時間</th>
                 <th width="120px">編輯</th>
             </tr>
         </thead>
@@ -29,7 +30,11 @@
                 <td>{{$value->id}}</td>
                 <td>{{$value->title}}</td>
                 <td><img width="200px" src="{{$value->img_url}}" alt=""></td>
+                {{-- <td><img width="200px" src="{{asset('/storage/'.$value->img_url)}}" alt=""></td> --}}
+
                 <td>{{$value->sub_title}}</td>
+                <td>{{$value->created_at}}</td>
+
                 <td>
                     <a href="news/edit/{{$value->id}}" class="btn btn-sm btn-info">編輯</a>
                     <a href="news/destroy/{{$value->id}}" class="btn btn-sm btn-danger">刪除</a>
