@@ -54,6 +54,14 @@ class FrontController extends Controller
 
     }
 
+    public function product() //變數$product用來儲存網址抓到的值
+    {
+        $item_list = DB::table('products')->orderBy('id','desc')->paginate(6);
+        // dd($animals_id);
+        return view('front.product',compact('item_list'));
+
+    }
+
     // public function animals_info(Request $request) //舊規格取值寫法
     // {
     //     dd($request->all());

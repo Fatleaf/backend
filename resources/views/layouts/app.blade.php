@@ -36,10 +36,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/news">資料管理</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="/admin/edit">新增資料</a>
-                        </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/admin/product">商品管理</a>
+                        </li>
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="/admin/edit">編輯資料</a>
                         </li> --}}
                     </ul>

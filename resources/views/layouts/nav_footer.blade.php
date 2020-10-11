@@ -42,6 +42,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/animals">動物天團</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/product">美味商品</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">login</a>
+                </li>
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
