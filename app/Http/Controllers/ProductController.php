@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +17,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $item_list = Product::all();
+        // $item_list = Product::all();
+        // $value = Product::with('product_type')->find(1);
+        $item_list = Product::where('class','=','3')->get();
+        // find()取得的值為物件[他只能顯示單筆]，如果php那邊有foreach(<<跑陣列)則無法動作
         // dd($item_list);
+
         return view('admin.product.index',compact('item_list'));
     }
 

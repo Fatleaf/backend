@@ -153,7 +153,7 @@ class NewsController extends Controller
     public function destroy($id)
     {
         // news::destroy($id);
-        $item = news::find($id);
+        $item = news::find($id); 
 
         $old_image = $item->img_url;
         if(file_exists(public_path().$old_image)){

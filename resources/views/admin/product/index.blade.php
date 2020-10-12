@@ -22,6 +22,7 @@
                 <th>總類</th>
                 <th>價格</th>
                 <th>介紹</th>
+                <th>創建時間</th>
                 <th width="120px">編輯</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{$value->class}}</td>
                 <td>{{$value->price}}</td>
                 <td>{{$value->info}}</td>
+                <td>{{$value->date}}</td>
 
                 <td>
                     <a href="product/edit/{{$value->id}}" class="btn btn-sm btn-info">編輯</a>
@@ -44,17 +46,6 @@
             </tr>
             @endforeach
         </tbody>
-        <tfoot>
-            <tr>
-                <th>ID</th>
-                <th>商品名稱</th>
-                <th>圖片</th>
-                <th>總類</th>
-                <th>價格</th>
-                <th>介紹</th>
-                <th>編輯</th>
-            </tr>
-        </tfoot>
     </table>
 @endsection
 
