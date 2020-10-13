@@ -66,16 +66,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 
 });
 
-// Route::prefix('admin')->middleware(['auth'])->group(function () {
-
-//     Route::get('product', 'ProductController@index');
-//     Route::get('product/create', 'ProductController@create');
-//     Route::post('product/store', 'ProductController@store');
-//     Route::get('product/edit/{news_id}', 'ProductController@edit');
-//     Route::post('product/update/{news_id}', 'ProductController@update');
-//     Route::get('product/destroy/{news_id}', 'ProductController@destroy');
-
-// });
 // Route::prefix('admin')->group(function () {
 //     Route::get('users', function () {
 //         // Matches The "/admin/users" URL

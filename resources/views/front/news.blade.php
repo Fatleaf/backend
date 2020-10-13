@@ -19,7 +19,7 @@
                         <h4>{{$value->sub_title}}</h4>
                         <img width="100%" src="{{$value->img_url}}" alt="圖片建議尺寸: 1000 x 567">
                         <p class="news_content">{{$value->content}}</p>
-                        <a class="btn btn-success" href="/news_info/{{$value->id}}" role="button">點擊查看更多 &raquo;</a>
+                        <a class="btn btn-success" href="/news_info/{{$value->id}}" role="button">點擊查看更多</a>
                     </div>
                 </div>
                 @endforeach

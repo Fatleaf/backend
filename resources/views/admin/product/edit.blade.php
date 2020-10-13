@@ -24,8 +24,13 @@
         <input type="file" class="form-control-file" id="image" name="image">
       </div>
     <div class="form-group">
-        <label for="class">總類</label>
-        <input type="text" class="form-control" id="class" aria-describedby="class" name="class" value="{{$item->class}}">
+        <label for="class">您推薦的景點位置</label>
+        <select class="form-control" id="class" name="class">
+          <option value="1">飯類</option>
+          <option value="2">麵類</option>
+          <option value="3">飲品</option>
+          <option value="4">湯類</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="price">價格</label>
