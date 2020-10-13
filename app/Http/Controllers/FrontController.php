@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use App\Product;
+use App\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -56,9 +58,20 @@ class FrontController extends Controller
 
     public function product() //變數$product用來儲存網址抓到的值
     {
-        $item_list = DB::table('products')->orderBy('id','desc')->paginate(6);
+        // $item_list = DB::table('products')->orderBy('id','desc')->paginate(6);
         // dd($animals_id);
-        return view('front.product',compact('item_list'));
+
+        $product_types = ProductType::with('products')->get();
+        // dd($product_types);
+        return view('front.product',compact('product_types'));
+
+    }
+
+    public function product_detail($product_id) //變數$product用來儲存網址抓到的值
+    {
+        $product = Product::find($product_id);
+        // dd($product_types);
+        return view('front.product_detail',compact('product'));
 
     }
 

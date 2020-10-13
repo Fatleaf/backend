@@ -33,8 +33,12 @@ Route::get('/animals_info/{animals_id}', 'FrontController@animals_info'); //{num
 
 Route::get('/product', 'FrontController@product');
 
+Route::get('/product_detail/{products_id}', 'FrontController@product_detail');
+
 
 Route::post('/store_contact', 'FrontController@store_contact');//post傳值
+
+
 
 // ['register'=>false]
 Auth::routes();
@@ -56,6 +60,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('product/edit/{news_id}', 'ProductController@edit');
     Route::post('product/update/{news_id}', 'ProductController@update');
     Route::get('product/destroy/{news_id}', 'ProductController@destroy');
+
+    // Route::get('product/{product_type_id}', 'ProductTypeController@index');
+
 
 });
 

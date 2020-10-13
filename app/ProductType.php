@@ -14,6 +14,6 @@ class ProductType extends Model
 
     public function products()
     {
-        return $this->hasMany('app\Product');
+        return $this->hasMany('App\Product','class');
     }
 }
