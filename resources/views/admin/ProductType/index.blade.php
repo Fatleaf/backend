@@ -31,7 +31,7 @@
                 <td>
                     <a href="/admin/productType/{{$product_type->id}}/edit" class="btn btn-sm btn-info">編輯</a>
                     {{-- <a href="product/destroy/{{$value->id}}" class="btn btn-sm btn-danger">刪除</a> --}}
-                    <button  data-ptid="{{$product_type->id}}" class="btn btn-sm btn-danger btn-delete">刪除</button>
+                    <button data-ptid="{{$product_type->id}}" class="btn btn-sm btn-danger btn-delete">刪除</button>
                     <form id="logout-form-{{$product_type->id}}" action="/admin/productType/{{$product_type->id}}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
@@ -76,14 +76,14 @@
                         }
                     }
             });
-        } );
+        });
 
         $("#example").on("click", ".btn-delete", function(){
                 var product_type_id = this.dataset.ptid;
                 // console.log(product_type_id);
                     Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
+                        title: '你確定嗎?',
+                        text: "刪除此類別將會一起刪除包含於此類別的商品，你將無法還原他!!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
@@ -96,7 +96,7 @@
 
                         }
                     })
-            });
+        });
 
     </script>
 

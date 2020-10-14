@@ -12,16 +12,16 @@
         <li class="breadcrumb-item active" aria-current="page">修改商品類別</li>
     </ol>
 </nav>
-<form method="POST" action="/admin/productType/{{$product_types->id}}" enctype="multipart/form-data">
+<form method="POST" action="/admin/productType/{{$product_type->id}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="form-group">
         <label for="type_name">商品類別名稱<small class="text-danger">最多20個字</small></label>
-        <input type="text" class="form-control" id="type_name" aria-describedby="type_name" name="type_name" value="{{$product_types->type_name}}" required>
+        <input type="text" class="form-control" id="type_name" aria-describedby="type_name" name="type_name" value="{{$product_type->type_name}}" required>
     </div>
     <div class="form-group">
         <label for="sort">商品排序</label>
-        <input type="text" class="form-control" id="sort" aria-describedby="sort" name="sort" value="{{$product_types->sort}}" required>
+        <input type="number" class="form-control" min="0" step="1" id="sort" aria-describedby="sort" name="sort" value="{{$product_type->sort}}" required>
     </div>
     <button type="submit" class="btn btn-primary">送出</button>
 </form>

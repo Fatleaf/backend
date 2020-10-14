@@ -15,6 +15,7 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
+        // 用ORM抓取MODEL->ProductType的資料
         $product_types = ProductType::all();
 
         return view('admin.productType.index',compact('product_types'));
@@ -27,6 +28,7 @@ class ProductTypeController extends Controller
      */
     public function create()
     {
+        //此function用來顯示create頁面
         return view('admin.productType.create');
     }
 
@@ -38,6 +40,7 @@ class ProductTypeController extends Controller
      */
     public function store(Request $request)
     {
+        //create頁面的資料會回傳過來這個function，接取資料並寫入(創造)到MODEL->ProductType裡面
         ProductType::create($request->all());
 
         return redirect()->route('productType.index');
@@ -63,11 +66,12 @@ class ProductTypeController extends Controller
      */
     public function edit($id)
     {
-        $product_types = ProductType::find($id);
+        //找到MODEL->ProductType位於$id的資料
+        $product_type = ProductType::find($id);
 
-        // dd($product_types);
+        // dd($product_type);
 
-        return view('admin.productType.edit',compact('product_types'));
+        return view('admin.productType.edit',compact('product_type'));
     }
 
     /**
@@ -79,9 +83,10 @@ class ProductTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product_types = ProductType::find($id);
+        //接取edit頁面裡發送的資料並寫入(創造)到MODEL->ProductType的$id(商品類別)位置的那筆資料
+        $product_type = ProductType::find($id);
 
-        $product_types->update($request->all());
+        $product_type->update($request->all());
 
         return redirect()->route('productType.index');
     }
@@ -94,6 +99,11 @@ class ProductTypeController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        //刪除MODEL->ProductType位於$id(商品類別)的資料，並把MODEL->Product裡面product_type_id=$id的資料一併刪除
+        // dd($id);
+        ProductType::destroy($id);
+        Product::where('product_type_id',$id)->delete();
+
+        return redirect()->route('productType.index');
     }
 }

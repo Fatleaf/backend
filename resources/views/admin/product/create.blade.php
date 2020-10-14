@@ -44,7 +44,7 @@
       </div>
     <div class="form-group">
         <label for="date">上市日期</label>
-        <input type="text" class="form-control" id="date" aria-describedby="date" name="date" required>
+        <input type="text" class="form-control" id="date" aria-describedby="date" name="date">
     </div>
     <button type="submit" class="btn btn-primary">送出</button>
 </form>

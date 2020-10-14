@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
         <label for="sort">商品排序</label>
-        <input type="text" class="form-control" id="sort" aria-describedby="sort" name="sort" required>
+        <input type="number" class="form-control" min="0" step="1" id="sort" aria-describedby="sort" name="sort" required>
     </div>
     <button type="submit" class="btn btn-primary">送出</button>
 </form>
