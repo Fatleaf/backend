@@ -61,7 +61,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('product/update/{news_id}', 'ProductController@update');
     Route::get('product/destroy/{news_id}', 'ProductController@destroy');
 
-    // Route::get('product/{product_type_id}', 'ProductTypeController@index');
+    Route::resource('productType', 'ProductTypeController');
 
 
 });

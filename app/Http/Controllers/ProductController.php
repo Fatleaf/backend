@@ -22,7 +22,8 @@ class ProductController extends Controller
         // $item_list = Product::where('class','=','3')->get();
         // find()取得的值為物件[他只能顯示單筆]，如果php那邊有foreach(<<跑陣列)則無法動作
         // dd($item_list);
-
+        // $product_types = ProductType::with('products')->get();
+        // dd($product_types);
         return view('admin.product.index',compact('item_list'));
     }
 
@@ -33,7 +34,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $product_types = ProductType::with('products')->get();
+
+        return view('admin.product.create',compact('product_types'));
     }
 
     /**
@@ -77,10 +80,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($product_id)
     {
-        $item = DB::table('products')->where('id', '=', $id)->first();
-        return view('admin.product.edit',compact('item'));
+        // $item = DB::table('products')->where('id', '=', $id)->first();
+        $product = Product::find($product_id);
+
+        $product_types = ProductType::with('products')->get();
+
+        // dd($product);
+        // dd($product_type);
+
+        return view('admin.product.edit',compact('product','product_types'));
     }
 
     /**

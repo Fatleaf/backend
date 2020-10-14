@@ -22,17 +22,16 @@
         <label for="image">上傳圖片 <small class="text-danger">圖片寬高比例為4:3</small></label>
         <input type="file" class="form-control-file" id="image" name="image">
       </div>
-    {{-- <div class="form-group">
-        <label for="class">總類</label>
-        <input type="text" class="form-control" id="class" aria-describedby="class" name="class" required>
-    </div> --}}
     <div class="form-group">
-        <label for="class">您推薦的景點位置</label>
-        <select class="form-control" id="class" name="class">
-          <option value="1">飯類</option>
+        <label for="product_type_id">商品類別</label>
+        <select class="form-control" id="product_type_id" name="product_type_id">
+          @foreach ($product_types as $product_type)
+          <option value="{{$product_type->id}}">{{$product_type->type_name}}</option>
+          @endforeach
+          {{-- <option value="1">飯類</option>
           <option value="2">麵類</option>
           <option value="3">飲品</option>
-          <option value="4">湯類</option>
+          <option value="4">湯類</option> --}}
         </select>
     </div>
     <div class="form-group">
