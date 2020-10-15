@@ -26,19 +26,13 @@ Route::get('/contact_us', 'FrontController@contact_us');
 Route::get('/news', 'FrontController@news');
 Route::get('/news_info/{news_id}', 'FrontController@news_info');
 
-
-
 Route::get('/animals', 'FrontController@animals');
-
 Route::get('/animals_info/{animals_id}', 'FrontController@animals_info'); //{number}物件number,問老師...
 
 Route::get('/product', 'FrontController@product');
-
 Route::get('/product_detail/{products_id}', 'FrontController@product_detail');
 
-
 Route::post('/store_contact', 'FrontController@store_contact');//post傳值
-
 
 
 // ['register'=>false]
@@ -51,6 +45,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     //Route Web.php
     Route::post('/ajax_upload_img','AdminController@ajax_upload_img');
     Route::post('/ajax_delete_img','AdminController@ajax_delete_img');
+    
+    //multiple picture delete route
+    Route::post('/ajax_delete_product_imgs','AdminController@ajax_delete_product_imgs');
 
     Route::get('news', 'NewsController@index');
     Route::get('news/create', 'NewsController@create');

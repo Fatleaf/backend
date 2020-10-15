@@ -23,12 +23,29 @@
     <div class="form-group">
         <label for="image">上傳圖片 <small class="text-danger">圖片寬高比例為4:3</small></label>
         <input type="file" class="form-control-file" id="image" name="image">
-      </div>
-    <div>
+    </div>
+    {{-- <div>
         原本的多張圖片
         @foreach ($product->product_imgs as $product_img)
         <img height="200" src="{{$product_img->img_url}}" alt="">
         @endforeach
+    </div> --}}
+    <div class="form-group row">
+        <label for="img" class="col-sm-2 col-form-label">現有產品組圖片</label>
+        @foreach ($product->product_imgs as $product_img)
+        <div class="col-sm-2 product_imgs" data-productimgid="{{$product_img->id}}">
+            <img class="img-fluid" src="{{$product_img->img_url}}" alt="">
+        <button class="btn btn-danger btn-sm" data-productimgid="{{$product_img->id}}" type="button">X</button>
+            <div class="sort">
+                <label for="imgs">Sort</label>
+                <input class="form-control" type="text">
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="form-group">
+        <label for="multiple-images">上傳多張圖片 <small class="text-danger">圖片寬高比例為4:3</small></label>
+        <input type="file" class="form-control-file" id="multiple-image" name="multiple-image[]" multiple>
     </div>
     {{-- {{$product->product_imgs}} --}}
     <div class="form-group">
@@ -59,4 +76,50 @@
 
 @section('js')
 
+{{-- 刪除按鈕的彈跳視窗JS --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+
+     $(document).ready(function() {
+
+        $('.product_imgs .btn-danger').click(function () {
+
+            var product_imgs_id = $(this).data('productimgid');
+
+            Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+
+                            $.ajax({
+                                method: 'POST',
+                                url: '/admin/ajax_delete_product_imgs',
+                                data: {product_imgs_id: product_imgs_id},
+                                success: function (res) {
+                                    $( `.product_imgs[data-productimgid='${product_imgs_id}']` ).remove();
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.error(textStatus + " " + errorThrown);
+                                }
+                            });
+                        }
+                })
+
+        });
+
+        
+    });
+</script>
 @endsection

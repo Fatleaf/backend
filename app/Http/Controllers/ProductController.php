@@ -56,7 +56,7 @@ class ProductController extends Controller
         // $asc = $product_types->product_imgs;
         // dd($product_types, $asc);
 
-
+        //單張圖片上傳
         $requestData = $request->all();
 
         //判斷request是否有img_url
@@ -66,9 +66,8 @@ class ProductController extends Controller
             $requestData['image'] = $path;
         }
 
-        Product::create($requestData);
-
         $new_product =  Product::create($requestData);
+        dd($new_product);
         $new_product_id = $new_product->id;
 
         //多個檔案
@@ -77,12 +76,16 @@ class ProductController extends Controller
         {
             foreach ($files as $file) {
                 //上傳圖片
-                $path = $this->fileUpload($file,'product');
+                $path = $this->fileUpload($file,'Product');
                 //新增資料進DB
-                $product_img = new ProductImg;
-                $product_img->product_id = $new_product_id;
-                $product_img->img_url = $path;
-                $product_img->save();
+                ProductImg::create([
+                    'img_url' => $path,
+                    'product_id' => $new_product_id,
+                ]);
+                // $product_img = new ProductImg;
+                // $product_img->product_id = $new_product_id;
+                // $product_img->img_url = $path;
+                // $product_img->save();
 
             }
         }
@@ -110,10 +113,12 @@ class ProductController extends Controller
      */
     public function edit($product_id)
     {
-        // $item = DB::table('products')->where('id', '=', $id)->first();
-        $product = Product::find($product_id);
 
-        $product_types = ProductType::with('products')->get();
+        // $product = Product::find($product_id);
+        // $product_types = ProductType::with('products')->get();
+
+        $product_types = ProductType::all();
+        $product = Product::where('id',$product_id)->with('product_imgs')->first();
 
         return view('admin.product.edit',compact('product','product_types'));
     }
@@ -131,7 +136,7 @@ class ProductController extends Controller
 
         $requestData = $request->all();
 
-        //判斷是否有上傳圖片
+        //(單張圖片)判斷是否有上傳圖片
         if($request->hasFile('image')) {
 
             //刪除舊有圖片
@@ -145,6 +150,25 @@ class ProductController extends Controller
             //將圖片的路徑放入requestData
             $requestData['image'] = $path;
 
+        }
+
+        //多張圖片
+        if($request->hasFile('multiple-image'))
+        {
+            $files = $request->file('multiple-image');
+            foreach ($files as $file) {
+                //上傳圖片
+                $path = $this->fileUpload($file,'product_imgs');
+                //新增資料進DB
+                ProductImg::create([
+                    'img_url' => $path,
+                    'product_id' => $id,
+                ]);
+                // $product_img = new ProductImg;
+                // $product_img->product_id = $id;
+                // $product_img->img = $path;
+                // $product_img->save();
+            }
         }
 
         $item->update($requestData);
@@ -163,11 +187,23 @@ class ProductController extends Controller
     {
         $item = Product::find($id);
 
+        //單張圖片上傳
         $old_image = $item->image;
         if(file_exists(public_path().$old_image)){
             File::delete(public_path().$old_image);
         }
         $item->delete();
+
+        //多張圖片的刪除
+        $product_imgs = ProductImg::where('product_id',$id)->get();
+        foreach($product_imgs as $product_img){
+            $old_product_img = $product_img->img_url;
+            if(file_exists(public_path().$old_product_img)){
+                File::delete(public_path().$old_product_img);
+            }
+
+            $product_img->delete();
+        }
 
         return redirect('admin/product');
     }
