@@ -24,8 +24,9 @@ Route::get('/index', 'FrontController@index');
 Route::get('/contact_us', 'FrontController@contact_us');
 
 Route::get('/news', 'FrontController@news');
-
 Route::get('/news_info/{news_id}', 'FrontController@news_info');
+
+
 
 Route::get('/animals', 'FrontController@animals');
 
@@ -47,6 +48,10 @@ Route::get('/admin', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
+    //Route Web.php
+    Route::post('/ajax_upload_img','AdminController@ajax_upload_img');
+    Route::post('/ajax_delete_img','AdminController@ajax_delete_img');
+
     Route::get('news', 'NewsController@index');
     Route::get('news/create', 'NewsController@create');
     Route::post('news/store', 'NewsController@store');
@@ -61,8 +66,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('product/update/{news_id}', 'ProductController@update');
     Route::get('product/destroy/{news_id}', 'ProductController@destroy');
 
-    Route::resource('productType', 'ProductTypeController');
-
+    Route::resource('productType', 'ProductTypeController')->except([
+        'show'
+    ]); //except 移除路徑
 
 });
 

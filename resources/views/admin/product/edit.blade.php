@@ -24,6 +24,13 @@
         <label for="image">上傳圖片 <small class="text-danger">圖片寬高比例為4:3</small></label>
         <input type="file" class="form-control-file" id="image" name="image">
       </div>
+    <div>
+        原本的多張圖片
+        @foreach ($product->product_imgs as $product_img)
+        <img height="200" src="{{$product_img->img_url}}" alt="">
+        @endforeach
+    </div>
+    {{-- {{$product->product_imgs}} --}}
     <div class="form-group">
         <label for="product_type_id">商品類別</label>
         <select class="form-control" id="product_type_id" name="product_type_id">
