@@ -51,8 +51,10 @@ class ProductController extends Controller
         // dd($request->file('multiple-image'));
 
 
-        // $product_types = ProductImg::find(1)->with('product')->get();
-        // dd($product_types);
+        // $product_types = ProductImg::find(1);
+
+        // $asc = $product_types->product_imgs;
+        // dd($product_types, $asc);
 
 
         $requestData = $request->all();
