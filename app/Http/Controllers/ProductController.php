@@ -67,7 +67,6 @@ class ProductController extends Controller
         }
 
         $new_product =  Product::create($requestData);
-        dd($new_product);
         $new_product_id = $new_product->id;
 
         //多個檔案
