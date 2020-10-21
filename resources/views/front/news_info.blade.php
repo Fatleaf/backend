@@ -22,7 +22,7 @@
                             <h3>{{$news->sub_title}}</h3>
                             {{$news->content}}
                         </div>
-
+                        {{-- <button class="btn btn-danger addcart" data-productid="{{$product->id}}">加入購物車</button> --}}
                     </div>
                 </div>
             </div>
@@ -32,5 +32,30 @@
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<script>
+    $('.addcart').click(function () {
+    var product_id = $(this).data('productid');
+    console.log(product_id);
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+            method: 'POST',
+            url: '/addProductToCar',
+            data: {product_id:product_id},
+            success: function (res) {
+                $('#cartTotalQuantity').text(res);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
+    });
+</script>
 @endsection
 

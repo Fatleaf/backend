@@ -23,7 +23,6 @@
                         <div class="info_content">
                             {{$product->info}}
                         </div>
-
                     </div>
                 </div>
             </div>

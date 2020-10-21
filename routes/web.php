@@ -34,6 +34,16 @@ Route::get('/product_detail/{products_id}', 'FrontController@product_detail');
 
 Route::post('/store_contact', 'FrontController@store_contact');//post傳值
 
+//cart金流
+Route::post('/addProductToCar', 'CartController@addProductToCar');
+
+Route::get('/getContent', 'CartController@getContent');
+
+Route::get('/getTotal', 'CartController@getTotal');
+
+Route::get('/cart', 'CartController@cart'); //結帳頁
+Route::post('/changeProductQty','CartController@changeProductQty'); //修改產品數量ajax
+
 
 // ['register'=>false]
 Auth::routes();
@@ -45,7 +55,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     //Route Web.php
     Route::post('/ajax_upload_img','AdminController@ajax_upload_img');
     Route::post('/ajax_delete_img','AdminController@ajax_delete_img');
-    
+
     //multiple picture delete route
     Route::post('/ajax_delete_product_imgs','AdminController@ajax_delete_product_imgs');
 
