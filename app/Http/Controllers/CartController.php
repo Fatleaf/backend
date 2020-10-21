@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use Darryldecode\Cart\Cart;
 
@@ -11,21 +12,32 @@ class CartController extends Controller
 
         // \Cart::add(455, 'Sample Item', 100.99, 2, array());
 
+        // $product_id = $request->product_id;
+
+        // $product = Product::find($product_id);
+
+        // $user = "";
+        // if(auth()->user())
+        // {
+        //     $userId = auth()->user()->id; // or any string represents user identifier
+        // }
+
+        // \Cart::session($userId)->add($product_id, $product->name, $product->price, 1, array());
+
+        // $cartTotalQuantity = \Cart::session($userId)->getTotalQuantity();
+        // return $cartTotalQuantity;
+
         $product_id = $request->product_id;
 
 
         $product = Product::find($product_id);
 
-        $user = "";
-        if(auth()->user())
-        {
-            $userId = auth()->user()->id; // or any string represents user identifier
-        }
 
-        \Cart::session($userId)->add($product_id, $product->title, $product->price, 1, array());
+        $userId = auth()->user()->id; // or any string represents user identifier
+        \Cart::session($userId)->add($product_id, $product->name, $product->price, 1, array());
 
         $cartTotalQuantity = \Cart::session($userId)->getTotalQuantity();
-        return $cartTotalQuantity;
+         return $cartTotalQuantity;
     }
 
     public function getContent()

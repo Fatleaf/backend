@@ -41,8 +41,8 @@ Route::get('/getContent', 'CartController@getContent');
 
 Route::get('/getTotal', 'CartController@getTotal');
 
-Route::get('/cart', 'CartController@cart'); //結帳頁
-Route::post('/changeProductQty','CartController@changeProductQty'); //修改產品數量ajax
+// Route::get('/cart', 'CartController@cart'); //結帳頁
+// Route::post('/changeProductQty','CartController@changeProductQty'); //修改產品數量ajax
 
 
 // ['register'=>false]

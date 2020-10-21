@@ -36,9 +36,11 @@ class FrontController extends Controller
 
     public function news_info($news_id)
     {
+
+        $product = Product::find($news_id);
         $news = DB::table('news')->where('id', '=', $news_id)->first();
 
-        return view('front.news_info',compact('news'));
+        return view('front.news_info',compact('news','product'));
     }
 
     public function animals()

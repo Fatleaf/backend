@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\news;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -153,7 +154,7 @@ class NewsController extends Controller
     public function destroy($id)
     {
         // news::destroy($id);
-        $item = news::find($id); 
+        $item = news::find($id);
 
         $old_image = $item->img_url;
         if(file_exists(public_path().$old_image)){

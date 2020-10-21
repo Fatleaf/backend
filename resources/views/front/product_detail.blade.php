@@ -23,6 +23,8 @@
                         <div class="info_content">
                             {{$product->info}}
                         </div>
+                        <button class="btn btn-danger addcart" data-productid="{{$product->id}}">加入購物車</button>
+
                     </div>
                 </div>
             </div>
@@ -31,6 +33,38 @@
 @endsection
 
 @section('js')
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script> --}}
+
+    <script>
+    $('.addcart').click(function () {
+        
+    // var product_id = $(this).data('productid');
+    var product_id = this.dataset.productid
+
+    console.log(product_id);
+    // console.log($product->id);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+            method: 'POST',
+            url: '/addProductToCar',
+            data: {product_id:product_id},
+            success: function (res) {
+                console.log();
+                $('#cartTotalQuantity').text(res);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
+    });
+    </script>
+
 @endsection
 
